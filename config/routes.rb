@@ -1,8 +1,23 @@
 Rails.application.routes.draw do
+
+  root 'home#index'
+  
+  devise_for :users, path: "account", controllers: {
+    registrations: :account,
+    sessions: :sessions,
+  }
+  
+  post "account/update_private_token" => "users#update_private_token", as: 'update_private_token_account'
+  
   resources :surveys
   
-  root 'surveys#index'
-
+  # 保持 User 的 routes
+  # 在所有路由的最后，以便于可以让用户在根目录下面使用，而又不影响到其他的 routes
+  # 比如 http://localhost:3000/tomwey
+  resources :users, path: "" do
+  end
+  
+  match '*path', via: :all, to: 'home#error_404'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

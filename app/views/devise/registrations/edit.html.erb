@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="box">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal', enctype:  "multipart/form-data" },
+        wrapper: :horizontal_form,
+        wrapper_mappings: {
+          check_boxes: :horizontal_radio_and_checkboxes,
+          radio_buttons: :horizontal_radio_and_checkboxes,
+          file: :horizontal_file_input,
+          boolean: :horizontal_boolean
+        }) do |f| %>
+      
+        <%= render 'shared/error_messages', target: resource if params[:by].blank? %>
+        
+        <fieldset>
+          <legend>个人资料设置</legend>
+          <%= f.input :nickname, label: "用户名" %>
+          <%= f.input :avatar, label: "头像" %>
+          <%= f.input :email, label: "邮箱", disabled: true %>
+        
+          <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-10">
+              <%= f.submit "更新资料", class: "btn btn-primary", disable_with:'保存中...' %>
+            </div>
+            
+          </div>
+        
+        </fieldset>
+      
+      <% end %>
+    </div>
+    
+    <div class="box">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name, by: :pwd), html: { method: :put, class: 'form-horizontal' },
+        wrapper: :horizontal_form,
+        wrapper_mappings: {
+          check_boxes: :horizontal_radio_and_checkboxes,
+          radio_buttons: :horizontal_radio_and_checkboxes,
+          file: :horizontal_file_input,
+          boolean: :horizontal_boolean
+        }) do |f| %>
+      
+        <%= render 'shared/error_messages', target: resource if params[:by] == "pwd" %>
+        <fieldset>
+          <legend>修改密码</legend>
+          <input type="hidden" name="by" value="pwd" />
+          <%= f.input :current_password, label: "旧密码" %>
+          <%= f.input :password, label:"新密码" %>
+          <%= f.input :password_confirmation,label: "确认新密码" %>
+        
+          <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-10">
+              <%= f.submit "修改密码", class: "btn btn-primary", disable_with: '保存中...' %>
+            </div>
+            
+          </div>
+        
+        </fieldset>
+      
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="box" style="text-align:center;">
+      <%= user_avatar_tag(@user, :big, link: false) %>
+    </div>
+    <div class="box">
+      <h2>密钥</h2>
+      <div><textarea id="private_token" style="width:190px;height:20px;cursor:default;" disabled><%= @user.private_token %></textarea></div>
+      <div class="buttons">
+        <a href="#" class="btn btn-default" id="update_private_token">更换一个</a> <span class="help-inline">用于三方应用验证</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :scripts do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#update_private_token").click(function(){
+        $.post("<%= update_private_token_account_path %>",function(re){
+          $("#private_token").val(re);
+        });
+        return false;
+      })
+    });
+  </script>
+<% end %>

@@ -4,7 +4,22 @@ source 'http://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 
-gem 'bootstrap-sass', '3.2.0.0'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+
+gem 'will_paginate', '3.0.7'
+gem 'bootstrap-will_paginate', '0.0.3'
+gem 'bootstrap_helper', '4.2.3'
+
+# 上传组件
+gem 'carrierwave', '~> 0.10.0'
+gem 'mini_magick','3.7.0', require: false
+
+# YAML 配置信息
+gem 'settingslogic', '~> 2.0.9'
+
+gem 'devise'
+gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form', branch: 'master'
 
 # Use mysql as the database for Active Record
 gem 'mysql2'

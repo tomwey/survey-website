@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-9">
     <div class="box">
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal', enctype:  "multipart/form-data" },
         wrapper: :horizontal_form,
@@ -19,7 +19,7 @@
           <%= f.input :email, label: "邮箱", disabled: true %>
         
           <div class="form-group">
-            <div class="col-sm-offset-3 col-sm-10">
+            <div class="col-sm-offset-3 col-sm-9">
               <%= f.submit "更新资料", class: "btn btn-primary", disable_with:'保存中...' %>
             </div>
             
@@ -44,12 +44,13 @@
         <fieldset>
           <legend>修改密码</legend>
           <input type="hidden" name="by" value="pwd" />
+          
           <%= f.input :current_password, label: "旧密码" %>
           <%= f.input :password, label:"新密码" %>
           <%= f.input :password_confirmation,label: "确认新密码" %>
         
           <div class="form-group">
-            <div class="col-sm-offset-3 col-sm-10">
+            <div class="col-sm-offset-3 col-sm-9">
               <%= f.submit "修改密码", class: "btn btn-primary", disable_with: '保存中...' %>
             </div>
             
@@ -60,13 +61,15 @@
       <% end %>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-3">
     <div class="box" style="text-align:center;">
       <%= user_avatar_tag(@user, :big, link: false) %>
     </div>
     <div class="box">
-      <h2>密钥</h2>
-      <div><textarea id="private_token" style="width:190px;height:20px;cursor:default;" disabled><%= @user.private_token %></textarea></div>
+      <h2 class="center">密钥</h2>
+      <div>
+        <input type="text" id="private_token" class="form-control" value="<%= @user.private_token %>" disabled >
+      </div>
       <div class="buttons">
         <a href="#" class="btn btn-default" id="update_private_token">更换一个</a> <span class="help-inline">用于三方应用验证</span>
       </div>

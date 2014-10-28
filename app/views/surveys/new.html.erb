@@ -1,5 +1,13 @@
-<h1>New survey</h1>
+<div class="row">
+  <div class="col-md-9">
+    <%= render 'form' %>
+  </div>
+  
+  <div class="col-md-3">
+    <div class="box">
+      <h2 class="center">如何创建问卷</h2>
+      <p style="font-size:12px">您可以对任何类型的任何问题发起一个问卷调查。问题类型不限。</p>
+    </div>
+  </div>
+</div>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', surveys_path %>

@@ -11,6 +11,8 @@ gem 'will_paginate', '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.3'
 gem 'bootstrap_helper', '4.2.3'
 
+gem "cocoon"
+
 # 上传组件
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick','3.7.0', require: false

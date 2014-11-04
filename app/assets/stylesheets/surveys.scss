@@ -22,12 +22,11 @@
 }
 
 .answer-item {
+  margin-bottom: 10px;
+  &:last-child {
+    margin-bottom: 0;
+  };
   > .row {
-    margin-bottom: 10px;
-    &:last-child {
-      margin-bottom: 0;
-    };
-    
     label, input, select {
       font-weight: normal;
       font-size: 12px;

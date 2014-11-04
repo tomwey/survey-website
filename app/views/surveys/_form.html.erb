@@ -40,11 +40,9 @@
 function add_answer(target)
 {
   var select = $(target);
-  if (select.val() == 3) {
+  if (select.val() < 3) {
     
   }
-  
-  alert("<%= j render "/surveys/answer_fields", f:  %>");
 }
 </script>
 <% end %>

@@ -30,6 +30,12 @@
     </div>
   </div>
   
-  <%= link_to_add_association '添加答案', f, :answers, class: 'btn btn-default' %>
+  <div class="form-group">
+    <%= f.fields_for :answers do |builder| %>
+      <%= render 'answer_fields', f: builder %>
+    <% end %>
+  
+    <%= link_to_add_association '添加答案', f, :answers, class: 'btn btn-default' %>
+  </div>
   
 </div>

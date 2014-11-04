@@ -21,6 +21,25 @@
   }
 }
 
+.answer-item {
+  > .row {
+    margin-bottom: 10px;
+    &:last-child {
+      margin-bottom: 0;
+    };
+    
+    label, input, select {
+      font-weight: normal;
+      font-size: 12px;
+    }
+    
+    p.small {
+//      background-color: red;
+      padding-top:10px;
+    }
+  }
+}
+
 .box {
   > .form-group {
     label, input, select, textarea {

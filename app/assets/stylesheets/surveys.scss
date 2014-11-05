@@ -1,3 +1,7 @@
+.question-items {
+  list-style: none;
+}
+
 .question-item {
   border: 1px dashed #ccc;
   padding: 20px;
@@ -22,21 +26,21 @@
 }
 
 .answer-item {
-  margin-bottom: 10px;
+  padding-bottom: 10px;
   &:last-child {
-    margin-bottom: 0;
+    padding-bottom: 0;
   };
-  > .row {
-    label, input, select {
-      font-weight: normal;
-      font-size: 12px;
-    }
-    
-    p.small {
-//      background-color: red;
-      padding-top:10px;
-    }
-  }
+//  > .row {
+//    label, input, select {
+//      font-weight: normal;
+//      font-size: 12px;
+//    }
+//    
+//    p.small {
+////      background-color: red;
+//      padding-top:10px;
+//    }
+//  }
 }
 
 .box {

@@ -12,3 +12,10 @@
     <% end %>
   </ul>
 </div>
+
+<% unless @survey.published? %>
+  <div class="box center">
+    <%= link_to '修改问卷', edit_survey_path(@survey), class: "btn btn-default" %>
+    <%= link_to '发布问卷', publish_survey_path(@survey), method: :patch, class: "btn btn-primary" %>
+  </div>
+<% end %>

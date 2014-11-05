@@ -23,7 +23,7 @@
       <%= f.label :question_type_id, "问题类型" %>
     </div>
     <div class="col-sm-2">
-      <%= f.select :question_type_id, QuestionType.all.map { |type| [type.name, type.id] }, {}, class: 'form-control', onchange: 'add_answer(this);' %>
+      <%= f.select :question_type_id, QuestionType.all.map { |type| [type.name, type.id] }, {}, id: "question-type-list", class: 'form-control', onchange: 'add_answer(this);' %>
     </div>
     <div class="col-sm-8">
       <p class="small">文本，段落文本等是不需要输入答案选项的</p>
@@ -31,15 +31,12 @@
   </div>
   
   <div class="row">
-    <div class="col-sm-10 col-sm-offset-2">
-      <%= f.fields_for :answers do |builder| %>
-        <%= render 'answer_fields', f: builder %>
-      <% end %>
-    </div>
-    
-    <div class="col-sm-3 col-sm-offset-2">
+    <%= f.fields_for :answers do |builder| %>
+      <%= render 'answer_fields', f: builder %>
+    <% end %>
+    <div class="col-sm-3 col-sm-offset-2" id="add-answer">
       <%= link_to_add_association '添加答案', f, :answers, class: 'btn btn-default' %>
-    </div>
-    
-  </div>
+    </div>  
+  </div>  
+  
 </div>

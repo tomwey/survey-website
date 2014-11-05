@@ -30,19 +30,24 @@
     </div>
     
     <div class="box">
-      <%= f.submit "创建问卷", class: "btn btn-primary" %>
+      <%= f.submit submit_text, class: "btn btn-primary" %>
     </div>
   
 <% end %>
 
 <% content_for :scripts do %>
 <script>
+
 function add_answer(target)
 {
-  var select = $(target);
-  if (select.val() < 3) {
-    
-  }
+  // var select = $(target);
+  // // alert(123);
+  // if (select.val() < 3) {
+  //   select.parent(".question-item").find("#add-answer").hide();
+  //   // $("#add-answer").hide();
+  // } else {
+  //   select.parent(".question-item").find("#add-answer").show();
+  // }
 }
 </script>
 <% end %>

@@ -21,6 +21,10 @@ module UsersHelper
     end
   end
   
+  def owner?(item)
+    item.user == current_user
+  end
+  
   def user_avatar_tag(user, size = :normal, opts = {})
     link = opts[:link] || true
     

@@ -4,3 +4,14 @@
  *= require surveys
  *= require_self
  */
+
+.box {
+  .error-404 {
+    height: 40px;
+    line-height: 50px;
+    font-size: 2em;
+    font-weight: bold;
+    color: red;
+    text-align: center;
+  }
+}

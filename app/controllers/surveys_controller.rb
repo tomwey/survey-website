@@ -1,12 +1,17 @@
+# coding: utf-8
 class SurveysController < ApplicationController
   before_action :require_user, except: [:index, :show]
-  before_action :set_survey, only: [:show, :edit, :update, :destroy]
+  before_action :set_survey, only: [:view_form, :show, :edit, :update, :publish, :destroy]
 
   def index
     @surveys = Survey.all
   end
 
   def show
+  end
+  
+  def view_form
+    
   end
 
   def new
@@ -22,7 +27,7 @@ class SurveysController < ApplicationController
 
     respond_to do |format|
       if @survey.save
-        format.html { redirect_to @survey, notice: 'Survey was successfully created.' }
+        format.html { redirect_to @survey, notice: '问卷创建成功!' }
         format.json { render :show, status: :created, location: @survey }
       else
         format.html { render :new }
@@ -36,13 +41,19 @@ class SurveysController < ApplicationController
   def update
     respond_to do |format|
       if @survey.update(survey_params)
-        format.html { redirect_to @survey, notice: 'Survey was successfully updated.' }
+        format.html { redirect_to @survey, notice: '问卷修改成功!' }
         format.json { render :show, status: :ok, location: @survey }
       else
         format.html { render :edit }
         format.json { render json: @survey.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def publish
+    @survey.published_at = Time.zone.now
+    @survey.save
+    redirect_to @survey, notice: "问卷发布成功!"
   end
 
   # DELETE /surveys/1

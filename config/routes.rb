@@ -9,7 +9,12 @@ Rails.application.routes.draw do
   
   post "account/update_private_token" => "users#update_private_token", as: 'update_private_token_account'
   
-  resources :surveys
+  resources :surveys do
+    member do
+      patch :publish
+      get :view_form
+    end
+  end
   
   # 保持 User 的 routes
   # 在所有路由的最后，以便于可以让用户在根目录下面使用，而又不影响到其他的 routes

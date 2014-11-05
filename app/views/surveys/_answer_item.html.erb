@@ -1,0 +1,47 @@
+<% if question.question_type_id == 1 %>
+<!-- 普通文本 -->
+  <input type="text" class="form-control">
+<% end %>
+
+<% if question.question_type_id == 2 %>
+<!-- 段落文本 -->
+  <textarea class="form-control"></textarea>
+<% end %>
+
+<% if question.question_type_id == 3 %>
+<!-- Radio Button -->
+<% question.answers.each do |answer| %>
+  <div class="radio">
+    <label>
+      <input type="radio" name="optionsRadios">
+      <%= answer.content %>
+    </label>
+  </div>
+  <% end %>
+<% end %>
+
+<% if question.question_type_id == 4 %>
+<!-- Checkbox -->
+<% question.answers.each do |answer| %>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"> <%= answer.content %>
+    </label>
+  </div>
+  <% end %>
+<% end %>
+
+<% if question.question_type_id == 5 %>
+<!-- 下拉选 -->
+  <select class="form-control">
+    <% question.answers.each do |answer| %>
+    <option><%= answer.content %></option>
+    <% end %>
+  </select>
+<% end %>
+
+<% if question.question_type_id == 6 %>
+<% end %>
+
+<% if question.question_type_id == 7 %>
+<% end %>

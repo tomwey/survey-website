@@ -1,14 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @survey.name %>
-</p>
-
-<p>
-  <strong>Tagline:</strong>
-  <%= @survey.tagline %>
-</p>
-
-<%= link_to 'Edit', edit_survey_path(@survey) %> |
-<%= link_to 'Back', surveys_path %>
+<div class="box">
+  <h2><%= @survey.name %></h2>
+  <%= render_survey_intro(@survey) %>
+  
+  <ul class="question-items">
+    <% @survey.questions.each do |q| %>
+      <li>
+        <h4><%= q.title %></h4>
+        <%= render_question_help_text(q) %>
+        <%= render_answer_items(q) %>
+      </li>
+    <% end %>
+  </ul>
+</div>
